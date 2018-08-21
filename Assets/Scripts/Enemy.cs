@@ -18,7 +18,9 @@ public class Enemy : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer>();
 	}
 
-	private void Start() {
+	private void Start() { 
+		Destroy (gameObject, 8f);
+
 		if (SetRandomFlip ())
 			Flip ();
 	
