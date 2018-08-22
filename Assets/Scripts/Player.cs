@@ -14,12 +14,15 @@ public class Player : MonoBehaviour {
 
     private Rigidbody2D rb2d;
 	private SpriteRenderer sprite; 
+	private Transform weaponPosition;
+
 	float move = 0;
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
+		weaponPosition = GetComponentInChildren<Transform> ();
     }
 
     // Update is called once per frame
@@ -42,17 +45,17 @@ public class Player : MonoBehaviour {
 
         if (jumping)
         {
-			rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+			rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse); 
             jumping = false;
         }
     }
 
 	void Flip(float move)
     {
-		if ((move > 0f && !sprite.flipX) || (move < 0f && !sprite.flipX)) 
+		if ((move > 0f && !sprite.flipX) || (move < 0f && sprite.flipX)) 
 		{
 			sprite.flipX = !sprite.flipX;
-		}
-        
+			//weaponPosition.localPosition = new Vector2 (-weaponPosition.localPosition.x, weaponPosition.localPosition.y);
+		}        
     }
 }
