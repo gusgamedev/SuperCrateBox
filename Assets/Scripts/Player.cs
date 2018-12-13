@@ -58,4 +58,6 @@ public class Player : MonoBehaviour {
 			//weaponPosition.localPosition = new Vector2 (-weaponPosition.localPosition.x, weaponPosition.localPosition.y);
 		}        
     }
+
+    
 }
